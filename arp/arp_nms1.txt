@@ -1,0 +1,30 @@
+screen.text at point {250}  {30} string {1¡¢Arp ²âÊÔ} 
+var {v_ttl} value {0} 
+var {v_y} value {60} 
+screen.text at point {50}  {~v_y~} string {IPµØÖ·} 
+screen.line from point {10}  {75} to point {180}  {75} 
+screen.text at point {350}  {~v_y~} string {MACµØÖ·} 
+screen.line from point {200}  {75} to point {630}  {75} 
+
+var {v_ip1} value {10.174.38.163} 
+var {v_ip2} value {10.174.38.164} 
+
+var {v_i} value {0} 
+var {v_y} value {80} 
+loop.begin
+	var {v_i} add number {1} 
+	var {v_y} add number {20} 
+	var {ip} copy var {v_ip~v_i~} 
+	var {v_time} value datetime 
+
+	screen.text at point {10}  {~v_y~} string {~v_i~} 
+	screen.text at point {50}  {~v_y~} string {~ip~} 
+	screen.text at point {400}  {~v_y~} string {~v_time~} 
+	arp.get var {arp_ip} ip {~ip~} 		
+	
+	screen.text at point {200}  {~v_y~} string {~arp_ip~} 	
+	if.var {v_i} >= {2} 
+			loop.exit
+	if.end
+loop.end
+run.end

@@ -1,0 +1,30 @@
+screen.text at point {150}  {30} string {16、web测试} 
+
+screen.text at point {10}  {55} string {序号} 
+screen.text at point {100}  {55} string {以github为例，演示web相关功能}
+screen.line from point {10}  {75} to point {630}  {75} 
+var {i} value {0} 
+var {x} value {0} 
+var {y} value {0}
+
+loop.begin 
+	var {i} add number {1} 
+	var {t1} value datetime
+	var {y} value number {70+28*~i~}
+	screen.text at point {5}  {~y~} string {第~i~行：} 
+
+	web.open  {https://github.com/snml2019/snml/blob/master/snmlVer.txt}
+	web.get
+
+	text.headpointer move to head
+	text.tailpointer move to tail
+	text.save to file {C:\snml2019\web\web_out~i~.txt}
+	
+	screen.text at point {50}  {~y~} string {~t1~, text.bytes = ~text.bytes~ bytes.} 	
+
+	if.var {i} >= {9}		
+		loop.exit
+	if.end
+loop.end
+
+run.end

@@ -1,0 +1,36 @@
+screen.set color red {0} green {0} blue {0} 
+screen.text at point {150}  {30} string {18¡¢sqlite²âÊÔ£ºsqlite.open¡¢sqlite.exec¡¢sqlite.save¡¢sqlite.load} 
+var {v_y} value {60} 
+
+screen.text at point {10}  {~v_y~} string {ÐòºÅ} 
+screen.text at point {250}  {~v_y~} string {²âÊÔÄÚÈÝ} 
+screen.line from point {10}  {75} to point {50}  {75} 
+screen.line from point {70}  {75} to point {630}  {75} 
+
+var {v_time} value datetime 
+var {v_i} value {0} 
+
+loop.begin 
+
+	var {v_i} add number {1} 
+	var {v_y} add number {18} 
+	
+	sqlite.open {C:\snml2019\sqlite\sqlite_test.db}
+	sqlite.log  {sqlite²âÊÔ£ºv_i=~v_i~}
+	sqlite.exec {select * from snml_log}
+
+	sqlite.save var {v_time} 
+	sqlite.exec {select * from snml_var}
+	
+	sqlite.save var name prefix {sqlite} 		
+	sqlite.load var {v_time} 	
+	sqlite.load var name prefix {sqlite} 	
+	sqlite.close	
+	screen.text at point {10}  {~v_y~} string {~v_i~} 
+	screen.text at point {70}  {~v_y~} string {v_time=~v_time~} 
+
+	if.var {v_y} > {400}
+		loop.exit
+	if.end
+loop.end
+run.end

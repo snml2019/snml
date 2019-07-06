@@ -1,0 +1,1 @@
+C:\snml2019\snml.exe nolog C:\snml2019\mysql\mysql_nms1.txt

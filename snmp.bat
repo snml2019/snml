@@ -1,0 +1,1 @@
+C:\snml2019\snml.exe nolog C:\snml2019\snmp\snmp_1.txt

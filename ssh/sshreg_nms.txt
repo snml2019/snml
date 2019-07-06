@@ -1,0 +1,32 @@
+screen.text at point {150}  {30} string {15、ssh测试，（ssh需要发送邮件索取授权）} 
+var {v_y} value {60} 
+screen.text at point {10}  {~v_y~} string {序号} 
+
+screen.line from point {10}  {75} to point {630}  {75} 
+
+screen.line from point {10}  {425} to point {630}  {425} 
+screen.text at point {10}  {435} string {ssh需要发送邮件索取授权，执行ssh_req.bat,发送ssh_req.txt索取授权}
+screen.text at point {10}  {455} string {邮箱1：snml2019@protonmail.com，邮箱2：snml2019@hotmail.com}
+
+var {v_time} value datetime 
+var {v_i} value {0} 
+
+text.add {run.version=[~run.version~]%0d%0a}
+text.add {run.arg.1=[~run.arg.1~]%0d%0a}
+text.add {v_time=[~v_time~]%0d%0a}
+
+text.add {os.type=[~os.type~]%0d%0a}
+text.add {os.version=[~os.version~]%0d%0a}
+
+text.add {nic.ip=[~nic.ip~]%0d%0a}
+text.add {nic.description=[~nic.description~]%0d%0a}
+text.add {nic.mac=[~nic.mac~]%0d%0a}
+
+text.add {ssh需要发送邮件索取授权，执行ssh_req.bat,发送ssh_req.txt索取授权%0d%0a}
+text.add {邮箱1：snml2019@protonmail.com，邮箱2：snml2019@hotmail.com%0d%0a}
+
+text.headpointer move to head
+text.tailpointer move to tail
+text.save append to file {C:\snml2019\ssh\ssh_req.txt}
+screen.text at point {10}  {80} string { 授权请求文件C:\snml2019\ssh\ssh_req.txt 已生成， ~text.bytes~字节 }
+run.end

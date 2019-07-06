@@ -1,0 +1,31 @@
+screen.text at point {150}  {30} string {17¡¢mysql²âÊÔ£ºmysql.open¡¢mysql.exec¡¢mysql.log} 
+var {v_y} value {60} 
+
+screen.text at point {10}  {~v_y~} string {ÐòºÅ} 
+screen.text at point {250}  {~v_y~} string {²âÊÔÄÚÈÝ} 
+screen.line from point {10}  {75} to point {50}  {75} 
+screen.line from point {70}  {75} to point {630}  {75} 
+
+var {v_time} value datetime 
+var {v_i} value {0} 
+
+loop.begin 
+
+	var {v_i} add number {1} 
+	var {v_y} add number {18} 
+
+	mysql.open  ip {18.5.9.16}  port  {3306} user {snmlCmDb} password {Mypassword}  database  {snmlCmDb} 
+	mysql.exec  {delete from  snml_log where 1=1}
+	mysql.log  {mysql²âÊÔ£ºv_i=~v_i~}
+	mysql.exec  {select count(*) as logcount from  snml_log}
+	mysql.exec  {select * from  snml_log}
+	
+	screen.text at point {10}  {~v_y~} string {~v_i~} 
+	screen.text at point {70}  {~v_y~} string {mysql.errno=~mysql.errno~£¬mysql.server.version=~mysql.server.version~£¬mysql.rows=~mysql.rows~£¬mysql.1.logcount=~mysql.1.logcount~} 
+
+	if.var {v_y} > {400}
+		
+		loop.exit
+	if.end
+loop.end
+run.end

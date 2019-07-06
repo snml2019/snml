@@ -1,0 +1,1 @@
+C:\snml2019\snml.exe nolog C:\snml2019\ping\ping_nms1.txt

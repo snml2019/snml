@@ -1,0 +1,1 @@
+C:\snml2019\snml.exe nolog C:\snml2019\var\var_nms1.txt

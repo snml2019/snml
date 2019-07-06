@@ -1,0 +1,1 @@
+C:\snml2019\snml.exe nolog C:\snml2019\text\text_nms2.txt

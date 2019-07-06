@@ -1,0 +1,1 @@
+C:\snml2019\snml.exe nolog C:\snml2019\excel\excel_nms1.txt

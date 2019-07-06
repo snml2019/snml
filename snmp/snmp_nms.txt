@@ -1,0 +1,42 @@
+#macro.call {draw_xy}
+screen.set color red {0} green {0} blue {0} 
+screen.text at point {150}  {30} string {10¡¢snmp²âÊÔ£ºsnmp.open¡¢snmp.get¡¢snmp.getnext} 
+var {v_y} value {60} 
+screen.text at point {10}  {~v_y~} string {ÐòºÅ} 
+screen.text at point {50}  {~v_y~} string {²âÊÔ´ÎÊý} 
+screen.line from point {10}  {75} to point {160}  {75} 
+screen.text at point {200}  {~v_y~} string {snmp.oid} 
+screen.line from point {180}  {75} to point {270}  {75} 
+screen.text at point {300}  {~v_y~} string {snmp.value} 
+screen.line from point {300}  {75} to point {630}  {75} 
+
+var {v_time} value datetime 
+var {v_i} value {0} 
+var {v_snmp.open} value {0} 
+var {v_snmp.get} value {0}
+var {v_snmp.getnext} value {0} 
+snmp.open version {2c} ip {192.168.186.132} port {161} password {cisco} 
+snmp.get var {cisco7200} oid {1.3.6.1.2.1.1.1.0} 
+snmp.getnext oid {1.3.6.1.2.1.1.1.0} 
+run.set loglevel {info} 
+loop.begin 
+
+	var {v_i} add number {1} 
+	var {v_y} add number {18} 
+	var {v_snmp.open} add number {1} 
+	var {v_snmp.get} add number {1} 
+	var {v_snmp.getnext} add number {1} 
+	
+	snmp.getnext oid {~snmp.oid~} 	
+	
+	screen.text at point {10}  {~v_y~} string {~v_i~} 
+	screen.text at point {50}  {~v_y~} string {~v_snmp.getnext~} 
+	screen.text at point {180}  {~v_y~} string {~snmp.oid~} 
+	screen.text at point {300}  {~v_y~} string {~snmp.value~} 	
+	
+	if.var {v_y} > {400}
+		
+		loop.exit
+	if.end
+loop.end
+run.end

@@ -1,0 +1,33 @@
+screen.set color red {0} green {0} blue {0} 
+screen.text at point {150}  {30} string {20¡¢sys²âÊÔ} 
+var {v_y} value {60} 
+
+screen.text at point {10}  {~v_y~} string {ÐòºÅ} 
+screen.text at point {250}  {~v_y~} string {²âÊÔÄÚÈÝ} 
+screen.line from point {10}  {75} to point {50}  {75} 
+screen.line from point {70}  {75} to point {630}  {75} 
+
+var {v_time} value datetime 
+var {v_i} value {0} 
+
+loop.begin 
+
+	var {v_i} add number {1} 
+	var {v_y} add number {18} 
+	
+	sys.command {ping www.126.com} 
+	sys.command {ipconfig /all} 
+	
+	sys.execute open {cmd} 			
+	sys.execute send {dir c:\ %0d%0a} 
+	sys.execute recv expect {¿ÉÓÃ×Ö½Ú} 
+	sys.execute close
+
+	screen.text at point {10}  {~v_y~} string {~v_i~} 
+	screen.text at point {70}  {~v_y~} string {v_time=~v_time~£¬text.bytes=~text.bytes~} 
+
+	if.var {v_y} > {400}
+		loop.exit
+	if.end
+loop.end
+run.end

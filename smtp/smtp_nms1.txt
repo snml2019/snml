@@ -1,0 +1,47 @@
+screen.text at point {250}  {30} string {12、smtp：发送邮件测试} 
+
+var {v_time} value datetime 
+var {v_y} value {60} 
+
+
+screen.text at point {10}  {~v_y~} string {sina邮箱发送邮件开始：~v_time~} 
+
+smtp.server {smtp.sina.com} port {25} username {xxxaaaaabbb@sina.com} password {myPassword}
+smtp.subject  {发送邮件测试：~v_time~}   body   {邮件正文%0a，发送时间：~v_time~}   
+smtp.add  attachment  {C:\snml2019\excel\snml.xlsx}
+smtp.add  attachment  {C:\snml2019\tmp\text99.txt}
+run.set loglevel {debug}
+smtp.send to {myEmail@163.com}
+run.set loglevel {nolog}
+screen.text at point {300}  {~v_y~} string {发送邮件完成} 
+
+
+var {v_time} value datetime 
+var {v_y} add number {20} 
+
+screen.text at point {10}  {~v_y~} string {126邮箱发送邮件开始：~v_time~} 
+
+smtp.server {smtp.126.com} port {25} username {xxxaaaaabbb@126.com} password {myPassword}
+smtp.subject  {发送邮件测试：~v_time~}   body   {邮件正文%0a，发送时间：~v_time~}   
+smtp.add  attachment  {C:\snml2019\excel\snml.xlsx}
+smtp.add  attachment  {C:\snml2019\tmp\text99.txt}
+run.set loglevel {debug}
+smtp.send to {myEmail@163.com}
+run.set loglevel {nolog}
+screen.text at point {300}  {~v_y~} string {发送邮件完成} 
+
+
+var {v_time} value datetime 
+var {v_y} add number {20} 
+screen.text at point {10}  {~v_y~} string {163邮箱发送邮件开始：~v_time~} 
+
+smtp.server {smtp.163.com} port {25} username {myEmail@163.com} password {myPassword}
+smtp.subject  {发送邮件测试：~v_time~}   body   {邮件正文%0a，发送时间：~v_time~}   
+smtp.add  attachment  {C:\snml2019\excel\snml.xlsx}
+smtp.add  attachment  {C:\snml2019\tmp\text99.txt}
+run.set loglevel {debug}
+smtp.send to {xxxaaaaabbb@126.com}
+run.set loglevel {nolog}
+screen.text at point {300}  {~v_y~} string {发送邮件完成} 
+
+run.end
