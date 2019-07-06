@@ -1,4 +1,6 @@
-  简单网络管理语言是一种类自然语言的脚本语言，它采用snmp、telnet、ping、dns、arp、ssh、tcp、udp、web等协议访问网络设备，内置smtp协议用于告警等邮件的发送，支持excel、mysql、sqlite等3种方式进行网管数据的存取。
+  Simple Network Management Language (snml)
+  
+  简单网络管理语言(snml)是一种类自然语言的脚本语言，它采用snmp、telnet、ping、dns、arp、ssh、tcp、udp、web等协议访问网络设备，内置smtp协议用于告警等邮件的发送，支持excel、mysql、sqlite等3种方式进行网管数据的存取。
   最新版本： snml8.13(ladybird)
   项目托管地址：https://github.com/snml2019/snml
   打包下载：https://snml2019.github.io/snml/snml2019.zip
