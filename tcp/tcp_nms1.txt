@@ -22,7 +22,7 @@ loop.begin
 	tcp.send {tcp.client:~v_time~} 
 	tcp.send {%0d%0a04}
 	tcp.send {client.end%0d%0a}
-	tcp.recv until {server.end}
+	tcp.recv expect {server.end}
 	tcp.close	
 
 	screen.text at point {250}  {~v_y~} string {~text.bytes~} 

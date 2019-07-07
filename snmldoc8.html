@@ -2608,7 +2608,7 @@ x4rZzQAAAABJRU5ErkJggg==' /><br>
     <a href="#C21">21、macro</a>
     <a href="#A1">附录1、全部语句</a>
     <h2><a name="C10"></a> 第10章、arp</h2><hr />
-    &nbsp;&nbsp;当一台主机把以太网数据帧发送到位于同一局域网上的另一台主机时，是根据 48 bit的以太网地址（MAC地址）来确定目的接口的。AR为IP地址到对应的硬件地址之间提供动态映射。<br>
+    &nbsp;&nbsp;当一台主机把以太网数据帧发送到位于同一局域网上的另一台主机时，是根据 48 bit的以太网地址（MAC地址）来确定目的接口的。ARP为IP地址到对应的硬件地址之间提供动态映射。<br>
     <br>
     <br>
     <h3>
@@ -2871,7 +2871,7 @@ x4rZzQAAAABJRU5ErkJggg==' /><br>
     tcp.recv {server_begin:}<br>
     tcp接收指定字符串“server_begin:”<br>
     <br>
-    tcp.recv until {server_end.}<br>
+    tcp.recv expect {server_end.}<br>
     tcp接收数据，一直到接收到指定字符串“server_end.”<br>
     <br>
     tcp.recv for {20} bytes<br>
@@ -2912,7 +2912,7 @@ x4rZzQAAAABJRU5ErkJggg==' /><br>
         <tr><td class="line_no">022</td><td class="line_src">&nbsp;&nbsp;tcp.send {tcp.client:~v_time~} </td></tr>
         <tr><td class="line_no">023</td><td class="line_src">&nbsp;&nbsp;tcp.send {%0d%0a04} </td></tr>
         <tr><td class="line_no">024</td><td class="line_src">&nbsp;&nbsp;tcp.send {client.end%0d%0a} </td></tr>
-        <tr><td class="line_no">025</td><td class="line_src">&nbsp;&nbsp;tcp.recv until {server.end} </td></tr>
+        <tr><td class="line_no">025</td><td class="line_src">&nbsp;&nbsp;tcp.recv expect {server.end} </td></tr>
         <tr><td class="line_no">026</td><td class="line_src">&nbsp;&nbsp;tcp.close </td></tr>
         <tr><td class="line_no">027</td><td class="line_src">&nbsp;&nbsp;</td></tr>
         <tr><td class="line_no">028</td><td class="line_src">&nbsp;&nbsp;screen.text at point {250} {~v_y~} string {~text.bytes~} </td></tr>
@@ -3333,7 +3333,7 @@ x4rZzQAAAABJRU5ErkJggg==' /><br>
     51 mysql.1.var_count=[54]<br>
     52 mysql.1.var_bytes=[1094]<br>
     53 mysql.1.text_bytes=[0]<br>
-    54 mysql.1.memo=[ver:2015.015.020901]<br>
+    54 mysql.1.memo=[ver:2019.7.6]<br>
 
     <br><br><a href="#C0">目录:</a>  <a href="#C1">1、var</a>
     <a href="#C2">2、screen</a>
@@ -3447,7 +3447,7 @@ x4rZzQAAAABJRU5ErkJggg==' /><br>
     63 sqlite.2.var_count=[42]<br>
     64 sqlite.2.var_bytes=[971]<br>
     65 sqlite.2.text_bytes=[0]<br>
-    66	qlite.2.memo=[ver:2019.025]<br>
+    66 sqlite.2.memo=[ver:2019.7.6]<br>
     <br><a href="#C0">目录:</a>  <a href="#C1">1、var</a>
     <a href="#C2">2、screen</a>
     <a href="#C3">3、snmp</a>
@@ -3803,7 +3803,7 @@ x4rZzQAAAABJRU5ErkJggg==' /><br>
     67  10 tcp.send {A2}
     68  10 tcp.send text
     69  10 tcp.recv {A2}
-    70  10 tcp.recv until {A3}
+    70  10 tcp.recv expect {A3}
     71  10 tcp.recv for {A3} bytes
     72  10 tcp.recv for {A3} seconds
     73  10 tcp.close
